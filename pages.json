@@ -1,0 +1,29 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "废品回收"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "废品回收",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F3F3F3",
+		"usingComponents": {
+			"t-navbar": "/wxcomponents/navbar/navbar",
+			"t-button": "/wxcomponents/button/button",
+			"t-icon": "/wxcomponents/icon/icon",
+			"t-grid": "/wxcomponents/grid/grid",
+			"t-grid-item": "/wxcomponents/grid-item/grid-item",
+			"t-swiper": "/wxcomponents/swiper/swiper",
+			"t-row": "/wxcomponents/row/row",
+			"t-col": "/wxcomponents/col/col",
+			"t-tab-bar": "/wxcomponents/tab-bar/tab-bar",
+			"t-tab-bar-item": "/wxcomponents/tab-bar-item/tab-bar-item"
+		}
+	},
+	"uniIdRouter": {}
+}
