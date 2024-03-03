@@ -5,6 +5,38 @@
 			"style": {
 				"navigationBarTitleText": "废品回收"
 			}
+		},
+		{
+			"path" : "pages/reserve/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "预约",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/customer-service/customer-service",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/user-center/user-center",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/reserve/reserve",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
@@ -22,8 +54,38 @@
 			"t-row": "/wxcomponents/row/row",
 			"t-col": "/wxcomponents/col/col",
 			"t-tab-bar": "/wxcomponents/tab-bar/tab-bar",
-			"t-tab-bar-item": "/wxcomponents/tab-bar-item/tab-bar-item"
+			"t-tab-bar-item": "/wxcomponents/tab-bar-item/tab-bar-item",
+			"t-message": "/wxcomponents/message/message"
 		}
+	},
+	"tabBar": {
+		"backgroundColor": "#FFFFFF",
+		"list": [
+			{
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-selected.png",
+				"text": "首页",
+				"pagePath": "pages/index/index"
+			},
+			{
+				"iconPath": "static/tabbar/phone.png",
+				"selectedIconPath": "static/tabbar/phone-selected.png",
+				"text": "预约",
+				"pagePath": "pages/reserve/index"
+			},
+			{
+				"iconPath": "static/tabbar/customer-service.png",
+				"selectedIconPath": "static/tabbar/customer-service-selected.png",
+				"text": "客服",
+				"pagePath": "pages/customer-service/customer-service"
+			},
+			{
+				"iconPath": "static/tabbar/usercenter.png",
+				"selectedIconPath": "static/tabbar/usercenter-selected.png",
+				"text": "我的",
+				"pagePath": "pages/user-center/user-center"
+			}
+		]
 	},
 	"uniIdRouter": {}
 }

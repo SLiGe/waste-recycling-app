@@ -1,0 +1,142 @@
+.card-theme {
+	--td-swiper-radius: 0;
+	--td-swiper-item-padding: 0 12rpx;
+	--td-swiper-nav-dot-color: #e7e7e7;
+	--td-swiper-nav-dot-active-color: #0052d9;
+	padding-bottom: 18px;
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+.card-theme .card-theme-nav {
+	bottom: -18px;
+}
+
+.t-class-nav {
+	bottom: -18px;
+}
+
+.scale-candidate {
+	height: 126px !important;
+}
+
+.t-class-prev-image {
+	height: 126px !important;
+}
+
+.t-class-next-image {
+	height: 126px !important;
+}
+
+.navigate-row {}
+
+.navigate-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 150rpx;
+}
+
+.navigate-img {
+	width: 64rpx;
+	height: 64rpx;
+}
+
+.navigate-label {
+	font-size: 28rpx;
+	color: #666666;
+	margin-top: 8rpx;
+}
+
+.container {
+	height: 100%;
+	margin: 0;
+	background-color: #F3F3F3;
+}
+
+.cate-list {
+	width: 95vw;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.gg {
+	width: 100%;
+	height: 220rpx;
+}
+
+.ad-bottom {
+	width: 95vw;
+	margin: 0 auto;
+	margin-bottom: 32rpx;
+}
+
+.cate-card {
+	width: 49%;
+	height: 200rpx;
+	background-color: #FFFFFF;
+	margin-bottom: 32rpx;
+	box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cate-title {
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 18rpx;
+	margin-top: 18rpx;
+}
+
+.cate-sublist {
+	margin-top: 10rpx;
+	font-size: 12px;
+	margin-left: 15rpx;
+	color: #666666;
+}
+
+.cate-ico {}
+
+.cate-img {
+	width: 64rpx;
+	height: 64rpx;
+	float: right;
+}
+
+.ad-border {
+	margin-top: 20rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-bottom: 32rpx;
+}
+
+.ad-content {
+	border-radius: 16rpx;
+	width: 95vw;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+}
+
+.block {
+	display: block;
+	height: 180rpx;
+	margin-bottom: 32rpx;
+}
+
+.photo-swiper-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 16rpx;
+	padding-top: 20rpx;
+	margin-left: 10rpx;
+}
+
+.photo-swiper {
+	width: 95vw;
+	margin: 0 auto;
+	border-radius: 16rpx 16rpx 0 0;
+	background-color: #FFFFFF;
+}
