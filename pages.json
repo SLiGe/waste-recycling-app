@@ -7,35 +7,31 @@
 			}
 		},
 		{
-			"path" : "pages/reserve/index",
-			"style" : 
-			{
-				"navigationBarTitleText" : "预约",
-				"enablePullDownRefresh" : false
+			"path": "pages/reserve/index",
+			"style": {
+				"navigationBarTitleText": "预约",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/customer-service/customer-service",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/customer-service/customer-service",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/user-center/user-center",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/user-center/index",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
 			}
 		},
 		{
-			"path" : "pages/reserve/reserve",
-			"style" : 
-			{
-				"navigationBarTitleText" : "",
-				"enablePullDownRefresh" : false
+			"path": "pages/reserve/reserve",
+			"style": {
+				"navigationBarTitleText": "预约表单",
+				"enablePullDownRefresh": false
 			}
 		}
 	],
@@ -55,13 +51,19 @@
 			"t-col": "/wxcomponents/col/col",
 			"t-tab-bar": "/wxcomponents/tab-bar/tab-bar",
 			"t-tab-bar-item": "/wxcomponents/tab-bar-item/tab-bar-item",
-			"t-message": "/wxcomponents/message/message"
+			"t-message": "/wxcomponents/message/message",
+			"t-input": "/wxcomponents/input/input",
+			"t-date-time-picker": "/wxcomponents/date-time-picker/date-time-picker",
+			"t-avatar": "/wxcomponents/avatar/avatar",
+			"t-cell-group": "/wxcomponents/cell-group/cell-group",
+			"t-cell": "/wxcomponents/cell/cell"
+
 		}
 	},
 	"tabBar": {
 		"backgroundColor": "#FFFFFF",
-		"list": [
-			{
+		"iconWidth": "24px",
+		"list": [{
 				"iconPath": "static/tabbar/home.png",
 				"selectedIconPath": "static/tabbar/home-selected.png",
 				"text": "首页",
@@ -83,7 +85,7 @@
 				"iconPath": "static/tabbar/usercenter.png",
 				"selectedIconPath": "static/tabbar/usercenter-selected.png",
 				"text": "我的",
-				"pagePath": "pages/user-center/user-center"
+				"pagePath": "pages/user-center/index"
 			}
 		]
 	},

@@ -68,7 +68,6 @@ let Swiper = class Swiper extends SuperComponent {
                 const { current, source } = e.detail;
                 this.setData({
                     navCurrent: current,
-                    current,
                 });
                 this.triggerEvent('change', { current, source });
             },

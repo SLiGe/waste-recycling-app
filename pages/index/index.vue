@@ -19,7 +19,8 @@
 			</view>
 		</view>
 		<view class="cate-list">
-			<view class="cate-card" v-for="(cate,index) in categoryList" v-bind:key="index">
+			<view class="cate-card" v-for="(cate,index) in categoryList" @click="toReserve(cate.code)"
+				v-bind:key="index">
 				<view class="cate-title">
 					{{cate.name}}
 				</view>
@@ -88,7 +89,13 @@
 
 		},
 		methods: {
+			toReserve(code) {
+				uni.setStorageSync('categoryCode', code)
+				uni.switchTab({
+					url: '/pages/reserve/index'
+				})
 
+			}
 		}
 	}
 </script>

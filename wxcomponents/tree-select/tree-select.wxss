@@ -61,4 +61,5 @@
 }
 .t-tree-select-column {
   width: 100%;
+  height: auto;
 }

@@ -83,6 +83,17 @@
 			}
 		},
 		mounted() {
+			
+		},
+		onLoad(option) {},
+		onShow() {
+			let preCode = uni.getStorageSync('categoryCode')
+			console.log(preCode)
+			if (preCode) {
+				this.currType = preCode
+				let item = this.categoryList.find(item => item.code === this.currType)
+				this.currTypeName = item.name
+			}
 			let item = this.categoryList.find(item => item.code === this.currType)
 			this.$data.currSubList = item.subList
 		},
@@ -92,6 +103,7 @@
 				this.$data.currType = code
 				this.currTypeName = item.name
 				this.$data.currSubList = item.subList
+				this.calcSelectedSubItem()
 			},
 			clickSubItem(code) {
 				let category = this.categoryList.find(item => item.code === this.currType)
@@ -106,11 +118,23 @@
 			clickOrder() {
 				if (this.selectedCategoryCount < 1) {
 					Message.error({
-					        context: this,
-					        offset: [20, 32],
-					        duration: 5000,
-					        content: '这是一条错误提示通知',
-					      });
+						context: this,
+						offset: [20, 32],
+						duration: 3000,
+						content: '请选择详细分类!',
+					});
+				} else {
+					let category = this.categoryList.find(item => item.code === this.currType)
+					let param = {
+						categoryName: category.name,
+						categoryCode: category.code,
+						subList: this.categoryList.find(item => item.code === this.currType).subList.filter(item =>
+							item.selected)
+					}
+					uni.navigateTo({
+						url: '/pages/reserve/reserve?param=' + JSON.stringify(param)
+					})
+
 				}
 			}
 		}

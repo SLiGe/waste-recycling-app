@@ -16,18 +16,22 @@ export default {
 	],
 	categories: [{
 		name: '纸类',
+		code: 'paper',
 		subList: ['纸壳统货', '黄纸板', '宣传页', '书本纸', '报纸'],
 		img: '/static/carton.png'
 	}, {
 		name: '塑料类',
+		code: 'plastic',
 		subList: ['塑料瓶', '废塑料', '塑料管', '泡沫'],
 		img: '/static/plastic.png'
 	}, {
 		name: '废旧衣服类',
+		code: 'clothes',
 		subList: ['衣服', '鞋子'],
 		img: '/static/clothes.png'
 	}, {
 		name: '其他类',
+		code: 'metal',
 		subList: ['废铜', '废铁', '废铝', '淘汰家电', '其他'],
 		img: '/static/fridge.png'
 	}],
