@@ -1,7 +1,7 @@
 export default {
 	categoryList: [{
 			name: '纸类',
-			img: '/static/clothes.png',
+			img: '/static/reserve/paper.png',
 			code: 'paper',
 			subList: [{
 					name: '纸壳统货',
@@ -44,7 +44,7 @@ export default {
 		{
 			name: '塑料',
 			code: 'plastic',
-			img: '/static/clothes.png',
+			img: '/static/reserve/plastic.png',
 			subList: [{
 					name: '纸壳统货',
 					img: '/static/carton.png',
@@ -86,7 +86,7 @@ export default {
 		{
 			name: '衣服',
 			code: 'clothes',
-			img: '/static/clothes.png',
+			img: '/static/reserve/clothes.png',
 			subList: [{
 					name: '纸壳统货',
 					img: '/static/carton.png',
@@ -128,7 +128,7 @@ export default {
 		{
 			name: '家电/金属',
 			code: 'metal',
-			img: '/static/clothes.png',
+			img: '/static/reserve/tv.png',
 			subList: [{
 					name: '纸壳统货',
 					img: '/static/carton.png',

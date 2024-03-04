@@ -11,7 +11,7 @@
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/gifts.png" class="prefix-icon" />
+					<img src="/static/reserve/box.png" class="prefix-icon" />
 					<view class="form-label-text">
 						物品类别:
 					</view>
@@ -30,7 +30,7 @@
 
 			<view class="form-item" @click="showReserveDateTimePicker">
 				<view class="form-label">
-					<img src="/static/gifts.png" class="prefix-icon" />
+					<img src="/static/reserve/date.png" class="prefix-icon" />
 					<view class="form-label-text">
 						预约时间:
 					</view>
@@ -43,7 +43,7 @@
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/gifts.png" class="prefix-icon" />
+					<img src="/static/reserve/user.png" class="prefix-icon" />
 					<view class="form-label-text">
 						您的姓名:
 					</view>
@@ -54,7 +54,7 @@
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/gifts.png" class="prefix-icon" />
+					<img src="/static/reserve/phone.png" class="prefix-icon" />
 					<view class="form-label-text">
 						您的电话:
 					</view>
@@ -65,7 +65,7 @@
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/gifts.png" class="prefix-icon" />
+					<img src="/static/reserve/house.png" class="prefix-icon" />
 					<view class="form-label-text">
 						您的地址:
 					</view>
@@ -95,7 +95,7 @@
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/gifts.png" class="prefix-icon" />
+					<img src="/static/reserve/house.png" class="prefix-icon" />
 					<view class="form-label-text">
 						入户确认:
 					</view>
