@@ -1,5 +1,12 @@
 <template>
-	<view class="container">
+	<view class="page-container">
+		<view class="tab-bar">
+			<view class="tab-bar__placeholder" />
+			<t-tabs :t-class="'tab-bar__inner'" :t-class-active="'tab-bar__active'" :t-class-track="'t-tabs-track'"
+				v-on:change="onTabChange" :value="status" style="position: fixed; top: 0; left: 0; z-index: 100">
+				<t-tab-panel v-for="item in tabs" v-bind:key="item.status" :label="item.text" :value="item.key" />
+			</t-tabs>
+		</view>
 		<view class="order-card" v-for="order in orderList" v-bind:key="order.orderNumber">
 			<view class="header header-class">
 				<view class="order-number">
@@ -32,6 +39,20 @@
 	export default {
 		data() {
 			return {
+				tabs: [{
+						key: -1,
+						text: '全部'
+					},
+					{
+						key: 1,
+						text: '已上门'
+					},
+					{
+						key: 2,
+						text: '未上门'
+					},
+				],
+				status: -1,
 				orderList: [{
 					orderNumber: '354021736133427225',
 					name: '金属',
@@ -72,7 +93,10 @@
 			}
 		},
 		methods: {
-
+			onTabChange(e) {
+				console.log(e)
+				this.$data.status = e.detail.value
+			}
 		}
 	}
 </script>
