@@ -77,10 +77,11 @@
 
 .cate-card {
 	width: 49%;
-	height: 200rpx;
+	height: 210rpx;
 	background-color: #FFFFFF;
 	margin-bottom: 32rpx;
 	box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.2);
+	position: relative;
 }
 
 .cate-title {
@@ -100,9 +101,13 @@
 .cate-ico {}
 
 .cate-img {
-	width: 64rpx;
-	height: 64rpx;
-	float: right;
+	width: 160rpx;
+	height: 80rpx;
+	/* float: right; */
+	position: absolute;
+	  bottom: 0;
+	  right: 0;
+	/* position: absolute; */
 }
 
 .ad-border {

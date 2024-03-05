@@ -9,20 +9,20 @@
 		<view class="content-wrapper">
 			<view class="cell-box">
 				<t-cell-group theme="card">
-				  <t-cell title="我的订单"  hover arrow >
-					  <view class="left-icon" slot="left-icon">
-					  	<image class="left-icon"  src="../../static/user/order.png"></image>
-					  </view>
-				  </t-cell>
-				  <t-cell title="我的资料"  hover arrow >
-					  <view class="left-icon" slot="left-icon">
-					  	<image class="left-icon"  src="../../static/user/info.png"></image>
-					  </view>
-				  </t-cell>
+					<t-cell title="我的订单" @click="toOrderList()" hover arrow>
+						<view class="left-icon" slot="left-icon">
+							<image class="left-icon" src="../../static/user/order.png"></image>
+						</view>
+					</t-cell>
+					<t-cell title="我的资料" hover arrow>
+						<view class="left-icon" slot="left-icon">
+							<image class="left-icon" src="../../static/user/info.png"></image>
+						</view>
+					</t-cell>
 				</t-cell-group>
 			</view>
 		</view>
-		
+
 	</view>
 </template>
 
@@ -34,7 +34,11 @@
 			}
 		},
 		methods: {
-
+			toOrderList() {
+				uni.navigateTo({
+					url: '/pages/order/order'
+				})
+			}
 		}
 	}
 </script>

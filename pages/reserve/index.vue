@@ -74,7 +74,7 @@
 	export default {
 		data() {
 			return {
-				currType: 'paper',
+				currType: 'zhilei',
 				currTypeName: '纸类',
 				address: '北京市大兴区',
 				categoryList: indexData.categoryList,

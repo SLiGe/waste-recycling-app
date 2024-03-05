@@ -33,6 +33,14 @@
 				"navigationBarTitleText": "预约表单",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path" : "pages/order/order",
+			"style" : 
+			{
+				"navigationBarTitleText" : "订单列表",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
@@ -41,23 +49,19 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F3F3F3",
 		"usingComponents": {
-			"t-navbar": "/wxcomponents/navbar/navbar",
 			"t-button": "/wxcomponents/button/button",
 			"t-icon": "/wxcomponents/icon/icon",
-			"t-grid": "/wxcomponents/grid/grid",
-			"t-grid-item": "/wxcomponents/grid-item/grid-item",
 			"t-swiper": "/wxcomponents/swiper/swiper",
 			"t-row": "/wxcomponents/row/row",
 			"t-col": "/wxcomponents/col/col",
-			"t-tab-bar": "/wxcomponents/tab-bar/tab-bar",
-			"t-tab-bar-item": "/wxcomponents/tab-bar-item/tab-bar-item",
 			"t-message": "/wxcomponents/message/message",
 			"t-input": "/wxcomponents/input/input",
 			"t-date-time-picker": "/wxcomponents/date-time-picker/date-time-picker",
 			"t-avatar": "/wxcomponents/avatar/avatar",
 			"t-cell-group": "/wxcomponents/cell-group/cell-group",
-			"t-cell": "/wxcomponents/cell/cell"
-
+			"t-cell": "/wxcomponents/cell/cell",
+			"t-radio-group": "/wxcomponents/radio-group/radio-group",
+			"t-image": "/wxcomponents/image/image"
 		}
 	},
 	"tabBar": {

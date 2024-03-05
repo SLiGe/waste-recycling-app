@@ -16,23 +16,23 @@ export default {
 	],
 	categories: [{
 		name: '纸类',
-		code: 'paper',
+		code: 'zhilei',
 		subList: ['纸壳统货', '黄纸板', '宣传页', '书本纸', '报纸'],
-		img: '/static/carton.png'
+		img: '/static/box80_40.png'
 	}, {
 		name: '塑料类',
-		code: 'plastic',
+		code: 'suliao',
 		subList: ['塑料瓶', '废塑料', '塑料管', '泡沫'],
-		img: '/static/plastic.png'
+		img: '/static/plastic80_40.png'
 	}, {
-		name: '废旧衣服类',
-		code: 'clothes',
-		subList: ['衣服', '鞋子'],
-		img: '/static/clothes.png'
+		name: '金属类',
+		code: 'jinshu',
+		subList: ['铁罐', '铝罐', '铝合金'],
+		img: '/static/metal80_40.png'
 	}, {
-		name: '其他类',
-		code: 'metal',
-		subList: ['废铜', '废铁', '废铝', '淘汰家电', '其他'],
-		img: '/static/fridge.png'
+		name: '家电类',
+		code: 'jiadian',
+		subList: ['电视机', '冰箱', '空调', '洗衣机', '其他'],
+		img: '/static/tv80_40.png'
 	}],
 }

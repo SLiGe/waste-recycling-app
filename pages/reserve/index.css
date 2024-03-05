@@ -57,6 +57,8 @@
 	padding-left: 16rpx;
 	padding-right: 16rpx;
 	background-color: #FFFFFF;
+	padding-bottom: 110rpx;
+	overflow-y: scroll;
 }
 
 .category-sub-list-title {
@@ -128,6 +130,7 @@
 	justify-content: space-between;
 	align-items: flex-end;
 	background-color: #FFFFFF;
+	z-index: 1;
 }
 
 .category-cart {
