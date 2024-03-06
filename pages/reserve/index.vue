@@ -2,7 +2,7 @@
 	<view class="container">
 		<view class="header">
 			<!-- 地址栏 -->
-			<view class="address-content">
+			<!-- <view class="address-content">
 				<view class="address-value">
 					<t-icon name="location" color="#84CCC9" size="48rpx" data-name="location" />
 					<view class="address">
@@ -13,7 +13,7 @@
 					修改
 					<t-icon name="chevron-right-s" color="#84CCC9" size="48rpx" data-name="chevron-right-s" />
 				</view>
-			</view>
+			</view> -->
 			<view class="category-list">
 				<t-row gutter="16">
 					<t-col span="6" v-for="item in categoryList" v-bind:key="item.code">

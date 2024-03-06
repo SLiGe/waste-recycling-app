@@ -67,7 +67,6 @@
 			"t-avatar": "/wxcomponents/avatar/avatar",
 			"t-cell-group": "/wxcomponents/cell-group/cell-group",
 			"t-cell": "/wxcomponents/cell/cell",
-			"t-radio-group": "/wxcomponents/radio-group/radio-group",
 			"t-image": "/wxcomponents/image/image",
 			"t-tabs": "/wxcomponents/tabs/tabs",
 			"t-tab-panel": "/wxcomponents/tab-panel/tab-panel",

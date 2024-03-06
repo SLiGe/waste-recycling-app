@@ -68,6 +68,10 @@
 	import {
 		showToast
 	} from '../../wxcomponents/toast/index.js'
+	import {
+		addressParse,
+		parseAddressToRegion
+	} from '../../utils/addressParse.js'
 	export default {
 		data() {
 			return {
@@ -145,12 +149,22 @@
 					wx.chooseLocation({
 						success: (res) => {
 							if (res.name) {
-								this.triggerEvent('addressParse', {
-									address: res.address,
-									name: res.name,
-									latitude: res.latitude,
-									longitude: res.longitude,
-								});
+								var addressBean = parseAddressToRegion(res)
+								addressParse(addressBean.REGION_PROVINCE, addressBean.REGION_CITY,
+									addressBean
+									.REGION_COUNTRY).then(res => {
+									this.userInfo.cityCode = res.cityCode
+									this.userInfo.cityName = addressBean.REGION_CITY
+									this.userInfo.countryCode = res.countryCode
+									this.userInfo.countryName = addressBean.REGION_COUNTRY
+									this.userInfo.provinceCode = res.provinceCode
+									this.userInfo.provinceName = addressBean.REGION_PROVINCE
+									this.userInfo.detailAddress = addressBean.ADDRESS
+									console.log(res)
+									this.areaValue = (this.userInfo.provinceName ? this.userInfo.provinceName + '/' : '') + (this.userInfo
+										.cityName ?
+										this.userInfo.cityName + '/' : '') + this.userInfo.districtName
+								})
 							} else {
 								showToast({
 									context: this,
