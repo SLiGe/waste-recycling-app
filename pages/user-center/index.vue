@@ -14,7 +14,7 @@
 							<image class="left-icon" src="../../static/user/order.png"></image>
 						</view>
 					</t-cell>
-					<t-cell title="我的资料" hover arrow>
+					<t-cell title="我的资料" @click="toInfo()" hover arrow>
 						<view class="left-icon" slot="left-icon">
 							<image class="left-icon" src="../../static/user/info.png"></image>
 						</view>
@@ -37,6 +37,11 @@
 			toOrderList() {
 				uni.navigateTo({
 					url: '/pages/order/order'
+				})
+			},
+			toInfo() {
+				uni.navigateTo({
+					url: '/pages/user-center/info'
 				})
 			}
 		}

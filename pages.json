@@ -40,6 +40,14 @@
 				"navigationBarTitleText": "订单列表",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path" : "pages/user-center/info",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的资料",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
@@ -62,7 +70,10 @@
 			"t-radio-group": "/wxcomponents/radio-group/radio-group",
 			"t-image": "/wxcomponents/image/image",
 			"t-tabs": "/wxcomponents/tabs/tabs",
-			"t-tab-panel": "/wxcomponents/tab-panel/tab-panel"
+			"t-tab-panel": "/wxcomponents/tab-panel/tab-panel",
+			"t-cascader": "/wxcomponents/cascader/cascader",
+			"t-toast": "/wxcomponents/toast/toast",
+			"t-location":"/components/t-location/t-location"
 		}
 	},
 	"tabBar": {

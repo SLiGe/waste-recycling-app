@@ -2,7 +2,7 @@
 	<view class="page-container">
 		<view class="tab-bar">
 			<view class="tab-bar__placeholder" />
-			<t-tabs :t-class="'tab-bar__inner'" :t-class-active="'tab-bar__active'" :t-class-track="'t-tabs-track'"
+			<t-tabs 
 				v-on:change="onTabChange" :value="status" style="position: fixed; top: 0; left: 0; z-index: 100">
 				<t-tab-panel v-for="item in tabs" v-bind:key="item.status" :label="item.text" :value="item.key" />
 			</t-tabs>
@@ -39,6 +39,7 @@
 	export default {
 		data() {
 			return {
+				tabBarActive:'tab-bar__active',
 				tabs: [{
 						key: -1,
 						text: '全部'
@@ -91,6 +92,9 @@
 				}],
 				imgUrl: 'https://cdn-we-retail.ym.tencent.com/tsr/goods/dz-2a.png?imageMogr2/thumbnail/70x70'
 			}
+		},
+		onPageScroll(e) {
+			console.log('正在滚动',e)
 		},
 		methods: {
 			onTabChange(e) {
