@@ -108,7 +108,8 @@
 	background-color: #FFFFFF;
 	border-radius: 16px;
 	width: 90%;
-	height: 60rpx;
+	/* height: 60rpx; */
+	min-height: 60rpx;
 	align-items: center;
 }
 

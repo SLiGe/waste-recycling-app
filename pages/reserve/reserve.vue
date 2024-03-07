@@ -11,7 +11,10 @@
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/reserve/box.png" class="prefix-icon" />
+					<view style="color: red;">
+						*
+					</view>
+					<t-icon name="list" class="prefix-icon" />
 					<view class="form-label-text">
 						物品类别:
 					</view>
@@ -23,55 +26,66 @@
 				</view>
 			</view>
 			<!-- 年月日时分 -->
-			<t-date-time-picker title="选择日期和时间" :visible="reserveDateTimeVisible" mode="minute" :value="reserveDateTime"
-				format="YYYY-MM-DD HH:mm" 
-				v-on:change="confirmReserveDateTimePicker"
+			<t-date-time-picker title="选择日期和时间" :visible="reserveDateTimeVisible" mode="minute"
+				:value="reserveInfo.reserveDateTime" format="YYYY-MM-DD HH:mm"
+				v-on:change="confirmReserveDateTimePicker" :start="startDateTime" :end="endDateTime"
 				v-on:cancel="hideReserveDateTimePicker" />
 
-			<view class="form-item" @click="showReserveDateTimePicker">
+			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/reserve/date.png" class="prefix-icon" />
+					<view style="color: red;">
+						*
+					</view>
+					<t-icon name="calendar" class="prefix-icon" />
 					<view class="form-label-text">
 						预约时间:
 					</view>
 				</view>
 				<view class="form-right">
-					<view class="form-input" >
-						{{reserveDateTime}}
-					</view>
+					<input type="text" disabled="disabled" :value="reserveInfo.reserveDateTime" placeholder="请选择预约时间"
+						class="form-input"  @click="showReserveDateTimePicker"/>
 				</view>
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/reserve/user.png" class="prefix-icon" />
+					<view style="color: red;">
+						*
+					</view>
+					<t-icon name="user-circle" class="prefix-icon" />
 					<view class="form-label-text">
 						您的姓名:
 					</view>
 				</view>
 				<view class="form-right">
-					<input class="form-input" />
+					<input class="form-input" :value="reserveInfo.name" placeholder="请输入您的姓名" />
 				</view>
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/reserve/phone.png" class="prefix-icon" />
+					<view style="color: red;">
+						*
+					</view>
+					<t-icon name="mobile" class="prefix-icon" />
 					<view class="form-label-text">
 						您的电话:
 					</view>
 				</view>
 				<view class="form-right">
-					<input class="form-input" />
+					<input class="form-input" :value="reserveInfo.phone" placeholder="请输入您的电话" />
 				</view>
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/reserve/house.png" class="prefix-icon" />
+					<view style="color: red;">
+						*
+					</view>
+					<t-icon name="houses" class="prefix-icon" />
 					<view class="form-label-text">
 						您的地址:
 					</view>
 				</view>
 				<view class="form-right">
-					<view class="location">
+					<view class="location" @click="onSearchAddress()">
 						<t-icon name="location" />
 						<view class="location-label">
 							定位
@@ -81,13 +95,15 @@
 			</view>
 			<view class="location-form">
 				<view class="location-text">
-					广东省广州市
+					{{areaValue}}
 				</view>
 				<view class="location-form-item">
 					<view class="form-label">
 						详细地址:
 					</view>
-					<input type="text" placeholder="请输入您的详细地址" class="form-input" />
+					<!-- <input type="text" :value="reserveInfo.detailAddress" placeholder="请输入您的详细地址" class="form-input" /> -->
+					<textarea class="form-input" style="width: 420rpx;" :value="reserveInfo.detailAddress"
+						placeholder="门牌号等(如10栋1001号)" auto-height />
 				</view>
 				<view class="location-prompt">
 					请认真填写您的地址、小区名称、楼栋单元，否则骑手难以到达您的准确位置。
@@ -95,7 +111,18 @@
 			</view>
 			<view class="form-item">
 				<view class="form-label">
-					<img src="/static/reserve/house.png" class="prefix-icon" />
+					<t-icon name="book" class="prefix-icon" />
+					<view class="form-label-text">
+						备注:
+					</view>
+				</view>
+				<view class="form-right">
+					<input class="form-input" :value="reserveInfo.remark" placeholder="备注信息" />
+				</view>
+			</view>
+			<view class="form-item">
+				<view class="form-label">
+					<t-icon name="houses" class="prefix-icon" />
 					<view class="form-label-text">
 						入户确认:
 					</view>
@@ -103,7 +130,7 @@
 				<view class="form-right">
 					<checkbox-group>
 						<label>
-							<checkbox value="cb" checked="true" />我同意允许骑手入户
+							<checkbox value="cb" :checked="reserveInfo.agreeLogin" />我同意允许骑手入户
 						</label>
 					</checkbox-group>
 				</view>
@@ -114,69 +141,138 @@
 				</view>
 			</view>
 			<view class="submit">
-				<view class="submit-button">
+				<view class="submit-button" @click="submit()">
 					提交预约上门
 				</view>
 			</view>
-
-
 		</view>
 	</view>
 </template>
 
 <script>
+	import {
+		addressParse,
+		parseAddressToRegion
+	} from '../../utils/addressParse.js'
+	import {
+		buildAddressSearch
+	} from '../../utils/address.js'
+	import {
+		phoneRegCheck
+	} from '../../utils/util.js'
+	import dayjs from 'dayjs'
+
 	export default {
 		data() {
 			return {
 				reserveDateTimeVisible: false,
-				reserveDateTime: '2024-03-04 14:13',
 				selectedItem: {
 					categoryName: '纸类',
-					subList: [{
-							name: '纸壳统货',
-							img: '/static/carton.png',
-							code: 'zkth',
-							selected: false
-						},
-						{
-							name: '黄纸板',
-							img: '/static/carton.png',
-							code: 'hzb',
-							selected: false
-						},
-						{
-							name: '宣传页',
-							code: 'xcy',
-							img: '/static/carton.png',
-							selected: false
-						},
-						{
-							name: '书本纸',
-							code: 'sbz',
-							img: '/static/carton.png',
-							selected: false
-						},
-						{
-							name: '报纸',
-							code: 'bz',
-							img: '/static/carton.png',
-							selected: false
-						},
-						{
-							name: '其他纸类',
-							code: 'other',
-							img: '/static/carton.png',
-							selected: false
-						}
-					]
+					subList: []
 				},
+				areaValue: '',
+				reserveInfo: {
+					agreeLogin: true
+				},
+				startDateTime: '',
+				endDateTime: ''
 			}
 		},
 		onLoad(option) {
 			this.selectedItem = JSON.parse(option.param)
 			console.log(this.selectedItem)
+			this.startDateTime = dayjs().format('YYYY-MM-DD HH:mm')
+			this.endDateTime = dayjs().add(7, 'day').format('YYYY-MM-DD HH:mm')
+			console.log(this.endDateTime)
 		},
 		methods: {
+			submit() {
+				const verifyInfo = this.verifyInfo()
+				if (!verifyInfo.isLegal) {
+					wx.showToast({
+						icon: 'none',
+						title: verifyInfo.tips,
+						duration: 1000
+					})
+					return
+				}
+			},
+			verifyInfo() {
+				const {
+					name,
+					phone,
+					detailAddress
+				} = this.reserveInfo
+				if (!name) {
+					return {
+						isLegal: false,
+						tips: '请填写联系人姓名',
+					}
+				}
+				if (!phone || !phoneRegCheck(phone)) {
+					return {
+						isLegal: false,
+						tips: '请填写正确的手机号',
+					}
+				}
+				if (!detailAddress) {
+					return {
+						isLegal: false,
+						tips: '请填写详细地址',
+					}
+				}
+			},
+			onSearchAddress() {
+				buildAddressSearch({
+					code: 'scope.userLocation',
+					name: '地址位置'
+				}).then(() => {
+					wx.chooseLocation({
+						success: (res) => {
+							if (res.name) {
+								var addressBean = parseAddressToRegion(res)
+								addressParse(addressBean.REGION_PROVINCE, addressBean.REGION_CITY,
+									addressBean
+									.REGION_COUNTRY).then(res => {
+									this.reserveInfo.cityCode = res.cityCode
+									this.reserveInfo.cityName = addressBean.REGION_CITY
+									this.reserveInfo.districtCode = res.districtCode
+									this.reserveInfo.districtName = addressBean.REGION_COUNTRY
+									this.reserveInfo.provinceCode = res.provinceCode
+									this.reserveInfo.provinceName = addressBean.REGION_PROVINCE
+									this.reserveInfo.detailAddress = addressBean.ADDRESS
+									console.log(res)
+									console.log(this.reserveInfo)
+									this.areaValue = (this.reserveInfo.provinceName ? this
+											.reserveInfo.provinceName + '/' : '') + (this
+											.reserveInfo
+											.cityName ?
+											this.reserveInfo.cityName + '/' : '') + this
+										.reserveInfo
+										.districtName
+								})
+							} else {
+								wx.showToast({
+									title: '地点为空，请重新选择',
+									icon: 'none',
+									duration: 1000
+								})
+							}
+						},
+						fail: function(res) {
+							console.warn(`wx.chooseLocation fail: ${JSON.stringify(res)}`);
+							if (res.errMsg !== 'chooseLocation:fail cancel') {
+								wx.showToast({
+									title: '地点错误，请重新选择',
+									icon: 'none',
+									duration: 1000
+								})
+							}
+						},
+					});
+				});
+			},
+
 			showReserveDateTimePicker() {
 				this.reserveDateTimeVisible = true
 			},
@@ -184,12 +280,11 @@
 				this.reserveDateTimeVisible = false
 			},
 			confirmReserveDateTimePicker(e) {
-				console.log(value)
 				const {
 					value
 				} = e?.detail;
 				console.log(value)
-				this.reserveDateTime = value
+				this.reserveInfo.reserveDateTime = value
 				this.hideReserveDateTimePicker()
 			}
 		}

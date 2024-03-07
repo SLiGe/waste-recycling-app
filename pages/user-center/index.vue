@@ -11,12 +11,12 @@
 				<t-cell-group theme="card">
 					<t-cell title="我的订单" @click="toOrderList()" hover arrow>
 						<view class="left-icon" slot="left-icon">
-							<image class="left-icon" src="../../static/user/order.png"></image>
+							<t-icon name="view-list"  class="left-icon"/>
 						</view>
 					</t-cell>
 					<t-cell title="我的资料" @click="toInfo()" hover arrow>
 						<view class="left-icon" slot="left-icon">
-							<image class="left-icon" src="../../static/user/info.png"></image>
+							<t-icon name="creditcard"  class="left-icon"/>
 						</view>
 					</t-cell>
 				</t-cell-group>

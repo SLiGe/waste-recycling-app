@@ -65,12 +65,10 @@
 			</view>
 		</view>
 	</view>
-	<t-message id="t-message" />
 </template>
 
 <script>
 	import indexData from './data.js'
-	import Message from '../../wxcomponents/message/index.js'
 	export default {
 		data() {
 			return {
@@ -83,7 +81,7 @@
 			}
 		},
 		mounted() {
-			
+
 		},
 		onLoad(option) {},
 		onShow() {
@@ -117,12 +115,11 @@
 			},
 			clickOrder() {
 				if (this.selectedCategoryCount < 1) {
-					Message.error({
-						context: this,
-						offset: [20, 32],
-						duration: 3000,
-						content: '请选择详细分类!',
-					});
+					wx.showToast({
+						title: '请选择详细分类!',
+						icon: 'none',
+						duration: 2000
+					})
 				} else {
 					let category = this.categoryList.find(item => item.code === this.currType)
 					let param = {

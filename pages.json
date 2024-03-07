@@ -61,7 +61,6 @@
 			"t-swiper": "/wxcomponents/swiper/swiper",
 			"t-row": "/wxcomponents/row/row",
 			"t-col": "/wxcomponents/col/col",
-			"t-message": "/wxcomponents/message/message",
 			"t-input": "/wxcomponents/input/input",
 			"t-date-time-picker": "/wxcomponents/date-time-picker/date-time-picker",
 			"t-avatar": "/wxcomponents/avatar/avatar",
@@ -71,7 +70,6 @@
 			"t-tabs": "/wxcomponents/tabs/tabs",
 			"t-tab-panel": "/wxcomponents/tab-panel/tab-panel",
 			"t-cascader": "/wxcomponents/cascader/cascader",
-			"t-toast": "/wxcomponents/toast/toast",
 			"t-location":"/components/t-location/t-location"
 		}
 	},
@@ -90,12 +88,12 @@
 				"text": "预约",
 				"pagePath": "pages/reserve/index"
 			},
-			{
+			/* {
 				"iconPath": "static/tabbar/customer-service.png",
 				"selectedIconPath": "static/tabbar/customer-service-selected.png",
 				"text": "客服",
 				"pagePath": "pages/customer-service/customer-service"
-			},
+			}, */
 			{
 				"iconPath": "static/tabbar/usercenter.png",
 				"selectedIconPath": "static/tabbar/usercenter-selected.png",

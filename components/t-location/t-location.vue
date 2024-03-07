@@ -6,13 +6,10 @@
 		</view>
 		<t-icon class="address-detail-wx-arrow" name="chevron-right" color="#bbb" size="32rpx" />
 	</view>
-	<t-toast id="t-toast" />
+
 </template>
 
 <script>
-	import {
-		showToast
-	} from '../../wxcomponents/toast/index.js'
 	import {
 		getPermission,
 	} from '../../utils/getPermission.js'
@@ -75,11 +72,9 @@
 							} = options;
 
 							if (!phoneRegCheck(telNumber)) {
-
-								showToast({
-									context: this,
-									selector: '#t-toast',
-									message: '请填写正确的手机号',
+								wx.showToast({
+									title: '请填写正确的手机号',
+									icon: 'none'
 								});
 								return;
 							}

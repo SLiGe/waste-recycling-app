@@ -45,12 +45,15 @@
 						</view>
 					</view>
 					<view class="form-right">
-						<input class="form-input" placeholder="门牌号等(如10栋1001号)" />
+						<!-- <input class="form-input" :value="userInfo.detailAddress" placeholder="门牌号等(如10栋1001号)" /> -->
+						<textarea class="form-input" :value="userInfo.detailAddress" placeholder="门牌号等(如10栋1001号)"
+							auto-height />
 					</view>
 				</view>
 			</view>
 			<view class="submit">
-				<t-button class="btn-submit-address" shape="round" block :disabled="!submitActive"> 保存 </t-button>
+				<t-button class="btn-submit-address" shape="round" @click="submit()" block :disabled="!submitActive"> 保存
+				</t-button>
 			</view>
 		</view>
 		<t-cascader data-item="address" data-type="1" :visible="areaPickerVisible" theme="tab" :options="areaDataList"
@@ -66,12 +69,12 @@
 	const innerPhoneReg = '^1(?:3\\d|4[4-9]|5[0-35-9]|6[67]|7[0-8]|8\\d|9\\d)\\d{8}$';
 	const innerNameReg = '^[a-zA-Z\\d\\u4e00-\\u9fa5]+$';
 	import {
-		showToast
-	} from '../../wxcomponents/toast/index.js'
-	import {
 		addressParse,
 		parseAddressToRegion
 	} from '../../utils/addressParse.js'
+	import {
+		buildAddressSearch
+	} from '../../utils/address.js'
 	export default {
 		data() {
 			return {
@@ -94,55 +97,23 @@
 			}
 		},
 		methods: {
-			builtInSearch({
-				code,
-				name
-			}) {
-				return new Promise((resolve, reject) => {
-					wx.getSetting({
-						success: (res) => {
-							if (res.authSetting[code] === false) {
-								wx.showModal({
-									title: `获取${name}失败`,
-									content: `获取${name}失败，请在【右上角】-小程序【设置】项中，将【${name}】开启。`,
-									confirmText: '去设置',
-									confirmColor: '#FA550F',
-									cancelColor: '取消',
-									success(res) {
-										if (res.confirm) {
-											wx.openSetting({
-												success(settinRes) {
-													if (settinRes.authSetting[code] ===
-														true) {
-														resolve();
-													} else {
-														console.warn('用户未打开权限', name,
-															code);
-														reject();
-													}
-												},
-											});
-										} else {
-											reject();
-										}
-									},
-									fail() {
-										reject();
-									},
-								});
-							} else {
-								resolve();
-							}
-						},
-						fail() {
-							reject();
-						},
-					});
-				});
+			submit() {
+				const verifyResult = this.onVerifyInputLegal()
+				console.log(verifyResult)
+				if (verifyResult.isLegal) {
+
+				} else {
+					wx.showToast({
+						title: verifyResult.tips,
+						icon: 'none',
+						duration: 1000
+					})
+				}
 			},
 
+
 			onSearchAddress() {
-				this.builtInSearch({
+				buildAddressSearch({
 					code: 'scope.userLocation',
 					name: '地址位置'
 				}).then(() => {
@@ -155,36 +126,34 @@
 									.REGION_COUNTRY).then(res => {
 									this.userInfo.cityCode = res.cityCode
 									this.userInfo.cityName = addressBean.REGION_CITY
-									this.userInfo.countryCode = res.countryCode
-									this.userInfo.countryName = addressBean.REGION_COUNTRY
+									this.userInfo.districtCode = res.countryCode
+									this.userInfo.districtName = addressBean.REGION_COUNTRY
 									this.userInfo.provinceCode = res.provinceCode
 									this.userInfo.provinceName = addressBean.REGION_PROVINCE
 									this.userInfo.detailAddress = addressBean.ADDRESS
 									console.log(res)
-									this.areaValue = (this.userInfo.provinceName ? this.userInfo.provinceName + '/' : '') + (this.userInfo
-										.cityName ?
-										this.userInfo.cityName + '/' : '') + this.userInfo.districtName
+									this.areaValue = (this.userInfo.provinceName ? this
+											.userInfo.provinceName + '/' : '') + (this.userInfo
+											.cityName ?
+											this.userInfo.cityName + '/' : '') + this.userInfo
+										.districtName
 								})
 							} else {
-								showToast({
-									context: this,
-									selector: '#t-toast',
-									message: '地点为空，请重新选择',
-									icon: '',
-									duration: 1000,
-								});
+								wx.showToast({
+									title: '地点为空，请重新选择',
+									icon: 'none',
+									duration: 1000
+								})
 							}
 						},
 						fail: function(res) {
 							console.warn(`wx.chooseLocation fail: ${JSON.stringify(res)}`);
 							if (res.errMsg !== 'chooseLocation:fail cancel') {
-								showToast({
-									context: this,
-									selector: '#t-toast',
-									message: '地点错误，请重新选择',
-									icon: '',
-									duration: 1000,
-								});
+								wx.showToast({
+									title: '地点错误，请重新选择',
+									icon: 'none',
+									duration: 1000
+								})
 							}
 						},
 					});
@@ -212,13 +181,13 @@
 				if (!name || !name.trim()) {
 					return {
 						isLegal: false,
-						tips: '请填写收货人',
+						tips: '请填写联系人姓名',
 					};
 				}
 				if (!nameRegExp.test(name)) {
 					return {
 						isLegal: false,
-						tips: '收货人仅支持输入中文、英文（区分大小写）、数字',
+						tips: '姓名仅支持输入中文、英文（区分大小写）、数字',
 					};
 				}
 				if (!phone || !phone.trim()) {
